@@ -65,10 +65,10 @@ input {
 	font-size: 28px;
 	margin: auto;
 	background-color: #00cccc;
-	color: #006666;
+	/*color: #006666;*/
 	line-height: 52px;
 	padding: 2px 10px 2px 10px;
-	border-bottom: 4px solid #006666;
+	border-bottom: 4px solid;
 }
 .input-box {
 	text-align: left;
@@ -94,18 +94,17 @@ input {
 .footer {
 	margin-top: 20px;
 }
-
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-color: #006666;
+	color: inherit;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color: #006666;
+   color: inherit;
    opacity: 1;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color: #006666;
+   color: inherit;
    opacity: 1;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color: #006666;
+   color: inherit;
 }
