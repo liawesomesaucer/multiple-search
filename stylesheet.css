@@ -18,6 +18,7 @@
 	text-align: center;
 	font-family: Helvetica;		
 	color: #006666;
+
 }
 a {
 	color: inherit;
@@ -32,7 +33,7 @@ h1 {
 	min-width: 700px;
 	min-width: 100%;
 	min-height: 100vh;
-	background-color: #33ffff;
+	background-color: #fff;
 }
 .banner {
 	width: 100%;
@@ -64,7 +65,7 @@ input {
 	margin: 0;
 	font-size: 28px;
 	margin: auto;
-	background-color: #00cccc;
+	background-color: #eee;
 	/*color: #006666;*/
 	line-height: 52px;
 	padding: 2px 10px 2px 10px;
@@ -84,9 +85,7 @@ input {
 }
 .input-submit:hover {
 	cursor: pointer;
-	background-color: #00b2b2;
-	transition-property: all;
-	transition-duration: .5s;
+	background-color: #eee;
 }
 .li-form-elem {
 	margin: 10px;
@@ -107,4 +106,7 @@ input {
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
    color: inherit;
+}
+input:-webkit-autofill {
+    color: inherit !important;
 }

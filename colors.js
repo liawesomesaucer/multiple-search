@@ -55,5 +55,4 @@ function change_colors( color_scheme ) {
 	$( "input" ).css({ "background-color": color_settings["input-background-color"]});
 	$( ".banner" ).css({ "background-color": color_settings["banner-background-color"]});
 }
-
 change_colors( color_scheme );
