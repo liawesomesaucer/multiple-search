@@ -1,6 +1,6 @@
 // Color schemes.
 // Pick one of the dank implemented color schemes
-color_scheme = "default_blue_accent";
+color_scheme = "calm_green";
 
 var colors = {
 

@@ -11,10 +11,10 @@ var url_strings = {
 	"Bing": "https://bing.com/search?q=",
 	"Google": "https://google.com/#q=",
 	// "Amazon": "http://www.amazon.com/s/field-keywords=",
-	"Google Images": "https://www.google.com/search?tbm=isch&q=",
+	"Google_Images": "https://www.google.com/search?tbm=isch&q=",
 	"Wikipedia": "https://en.wikipedia.org/wiki/Special:Search?search=",
 	"YouTube":"https://www.youtube.com/results?search_query=",
-	// "Yahoo Answers": "https://answers.yahoo.com/search/search_result?p=",
+	// "Yahoo_Answers": "https://answers.yahoo.com/search/search_result?p=",
 	// "Quora": "https://www.quora.com/search?q=",
 	// "Yahoo": "https://search.yahoo.com/search?p=",
 	// "KhanAcademy": "https://www.khanacademy.org/search?page_search_query=",
@@ -28,7 +28,6 @@ var url_strings = {
 	// "Flickr": "https://www.flickr.com/search/?text=",
 }
 
-// If you're looking at this you probably know what you're doing so...GET CRACKIN AND MAKE IT EVEN BETTER :)))))
 var msg_form_inc = " bar contains no input. Please check again";
 var error = false;
 var setup_string = '';
