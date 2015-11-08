@@ -7,38 +7,38 @@
 //			name-you-want-displayed: url-of-search-path
 //
 // You can also move them around to change their orders
-var url_strings = {
-	"Bing": "https://bing.com/search?q=",
-	"Google": "https://google.com/#q=",
-	// "Amazon": "http://www.amazon.com/s/field-keywords=",
-	"Google_Images": "https://www.google.com/search?tbm=isch&q=",
-	"Wikipedia": "https://en.wikipedia.org/wiki/Special:Search?search=",
-	"YouTube":"https://www.youtube.com/results?search_query=",
-	// "Yahoo_Answers": "https://answers.yahoo.com/search/search_result?p=",
-	// "Quora": "https://www.quora.com/search?q=",
-	// "Yahoo": "https://search.yahoo.com/search?p=",
-	// "KhanAcademy": "https://www.khanacademy.org/search?page_search_query=",
-	// "Ted": "http://www.ted.com/search?q=",
-	// "Twitter": "https://twitter.com/search?q=",
-	// "SoundCloud": "https://soundcloud.com/search?q=",
-	// "LinkedIn": "https://www.linkedin.com/vsearch/f?keywords=",
-	// "Dictionary.com": "http://dictionary.reference.com/misspelling?term=",
-	// "Thesaurus.com": "http://www.thesaurus.com/misspelling?term=",
-	// "Reddit": "https://www.reddit.com/r/all/search?q=",
-	// "Flickr": "https://www.flickr.com/search/?text=",
-}
-
+var default_urls = ["Bing", "Google", "Google_Images", "Wikipedia", "Youtube"];
 var msg_form_inc = " bar contains no input. Please check again";
 var error = false;
-var setup_string = '';
-
+var url_strings = {
+	"Amazon": "http://www.amazon.com/s/field-keywords=",
+	"Bing": "https://bing.com/search?q=",
+	"Dictionary_com": "http://dictionary.reference.com/misspelling?term=",
+	// "Flickr": "https://www.flickr.com/search/?text=",
+	"Google": "https://google.com/#q=",
+	"Google_Images": "https://www.google.com/search?tbm=isch&q=",
+	"KhanAcademy": "https://www.khanacademy.org/search?page_search_query=",
+	"LinkedIn": "https://www.linkedin.com/vsearch/f?keywords=",
+	"Quora": "https://www.quora.com/search?q=",
+	"Reddit": "https://www.reddit.com/r/all/search?q=",
+	// "SoundCloud": "https://soundcloud.com/search?q=",
+	"Ted": "http://www.ted.com/search?q=",
+	// "Thesaurus_com": "http://www.thesaurus.com/misspelling?term=",
+	"Twitter": "https://twitter.com/search?q=",
+	"Wikipedia": "https://en.wikipedia.org/wiki/Special:Search?search=",	
+	"Yahoo": "https://search.yahoo.com/search?p=",
+	"Yahoo_Answers": "https://answers.yahoo.com/search/search_result?p=",
+	"YouTube":"https://www.youtube.com/results?search_query=",
+}
 function setup_and_listen( url_strings ) {
-	setup( url_strings );
-	listen( url_strings );
+	checked_urls = find_checked_urls( url_strings )
+	setup( checked_urls );
+	listen( checked_urls );
 }
 
 // Builds the html page based on url_strings
 function setup( url_strings ) {
+	var setup_string = '';
 	jQuery.each( url_strings, function(key, val) {
 		setup_string = setup_string + 
 		'<li class="li-form-elem">' + 
@@ -68,8 +68,60 @@ function display_banner( key, error, message ) {
 	if ( error ) 
 		$( ".banner" ).css( { "background-color": "#fff"});
 	$( "#banner-msg" ).text( key + message );
-
 	error = false;
 }
 
 setup_and_listen( url_strings );
+
+
+// Now dealing with the sidebar
+sidebar_shown = false;
+
+$('#sidebar-toggle').click( function(){
+	if (sidebar_shown == false) {
+		$(".sidebar").animate({'left': '-300px'}, 500);
+		$(".wrapper").animate({'padding-left':'20px'},500);
+		sidebar_shown = true;
+	} else {
+		$(".sidebar").animate({'left': '0'}, 500);
+		$(".wrapper").animate({'padding-left':'300px'},500);
+		sidebar_shown = false;
+	}
+});
+
+
+function find_checked_urls( url_strings ) {
+
+	var settings_string = '';
+	var cookies ={};
+	var checked_urls = {};
+
+	document.cookie.split(/\s*;\s*/).forEach(function(pair) {
+  		pair = pair.split(/\s*=\s*/);
+  		cookies[pair[0]] = pair.splice(1).join('=');
+	});
+	// document.cookie = url_strings;
+
+	// Generates each cookie
+	jQuery.each( url_strings, function(key, val) {
+		settings_string = settings_string + 
+			'<li id="sidebar-' + key + '" class="sidebar-elem">' +
+				'<p class="sidebar-elem-name">' + key + '</p>' + 
+				'<div class="slideThree">' + 	
+					'<input type="checkbox" value="None" id="slideThree-'+ key + '" name="check" />' + 
+					'<label for="slideThree-' + key + '"></label>' + 
+				'</div>' + 
+			'</li>';
+	});
+	$( "#sidebar-list" ).html(settings_string);
+
+	// Checks boxes that are configurated by cookies
+	jQuery.each( url_strings, function(key, val) {
+		if (cookies[key] != undefined) {
+			checked_urls[key] = val;
+			document.getElementById('slideThree-' + key).checked = true;
+		}
+	});
+	// console.log(checked_urls)
+	return (Object.keys(checked_urls).length != 0) ? checked_urls : url_strings;
+}
