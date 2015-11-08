@@ -30,6 +30,13 @@ var url_strings = {
 	"Yahoo_Answers": "https://answers.yahoo.com/search/search_result?p=",
 	"YouTube":"https://www.youtube.com/results?search_query=",
 }
+
+
+if (!window.cookie) {
+	console.log("No cookies found. Setting default cookies");
+	window.cookie = "url_list=" + JSON.stringify(default_urls);
+}
+
 function setup_and_listen( url_strings ) {
 	checked_urls = find_checked_urls( url_strings )
 	setup( checked_urls );
@@ -89,6 +96,17 @@ $('#sidebar-toggle').click( function(){
 	}
 });
 
+// console.log(JSON.stringify(url_strings));
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+    }
+    return "";
+}
 
 function find_checked_urls( url_strings ) {
 
@@ -96,11 +114,15 @@ function find_checked_urls( url_strings ) {
 	var cookies ={};
 	var checked_urls = {};
 
-	document.cookie.split(/\s*;\s*/).forEach(function(pair) {
-  		pair = pair.split(/\s*=\s*/);
-  		cookies[pair[0]] = pair.splice(1).join('=');
-	});
+	// document.cookie.split(/\s*;\s*/).forEach(function(pair) {
+ //  		pair = pair.split(/\s*=\s*/);
+ //  		cookies[pair[0]] = pair.splice(1).join('=');
+	// });
 	// document.cookie = url_strings;
+	cookies = getCookie("url_list");
+	console.log("gettingcookie")
+	console.log(cookies)
+
 
 	// Generates each cookie
 	jQuery.each( url_strings, function(key, val) {
