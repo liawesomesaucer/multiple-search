@@ -122,6 +122,9 @@ function find_checked_urls( url_strings ) {
 			document.getElementById('slideThree-' + key).checked = true;
 		}
 	});
-	// console.log(checked_urls)
+	console.log("cookies")
+	console.log(window.cookie)
+	console.log(checked_urls)
+
 	return (Object.keys(checked_urls).length != 0) ? checked_urls : url_strings;
 }
