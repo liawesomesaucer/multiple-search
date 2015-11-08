@@ -120,8 +120,9 @@ function find_checked_urls( url_strings ) {
 	// });
 	// document.cookie = url_strings;
 	cookies = getCookie("url_list");
+	console.log(window.cookie)
 	console.log("gettingcookie")
-	console.log(cookies)
+	console.log(cookies) 
 
 
 	// Generates each cookie
