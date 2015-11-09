@@ -45,10 +45,26 @@ const some_random_urls = {	// For test purposes
 	"Twitter": "https://twitter.com/search?q=",
 }
 //var cookies_json = decode_cookie( window.cookie );
-if (window.cookie = "") {
-	console.log("No cookies found. Setting default cookies and showing defaults");
-	window.cookie = encode_cookie( default_urls )
-}
+// if (window.cookie.length == 0) {
+// 	console.log("No cookies found. Setting default cookies and showing defaults");
+// 	window.cookie = encode_cookie( default_urls )
+// }
+
+// Now dealing with the sidebar
+sidebar_shown = false;
+
+$('#sidebar-toggle').click( function(){
+	if (sidebar_shown == true) {
+		$(".sidebar").animate({'left': '-300px'}, 500);
+		$(".wrapper").animate({'padding-left':'0px'},500);
+		sidebar_shown = false;
+	} else {
+		$(".sidebar").animate({'left': '0px'}, 500);
+		$(".wrapper").animate({'padding-left':'300px'},500);
+		sidebar_shown = true;
+	}
+});
+
 
 function decode_cookie( cookie_string ) {
 	// Converts cookie_string to valid json
@@ -56,7 +72,7 @@ function decode_cookie( cookie_string ) {
 	var cookie_json = {};
 	var cookie_list = cookie_string.split(";");
 	for (var j=0;j<cookie_list.length;j++) {
-		if (cookie_list[j] === "") continue;
+		if (cookie_list[j].length == 0) continue;
 		cookie_tuple = cookie_list[j].split("=");
 		cookie_json[cookie_tuple[0]] = cookie_tuple[1];
 	}	
@@ -82,7 +98,7 @@ function setup_and_listen( url_strings ) {
 	listen( checked_urls );
 }
 
-function setup( url_strings ) {
+function setup( url_strings ) {		// I should use react for this
 	// Builds the html page based on url_strings
 	var setup_string = '';
 	jQuery.each( url_strings, function(key, val) {
@@ -121,22 +137,6 @@ setup_and_listen( url_strings );
 // Convert url_list json into string
 // set as cookie
 // figure out how to set and get
-
-// Now dealing with the sidebar
-sidebar_shown = false;
-
-$('#sidebar-toggle').click( function(){
-	if (sidebar_shown == true) {
-		$(".sidebar").animate({'left': '-300px'}, 500);
-		$(".wrapper").animate({'padding-left':'0px'},500);
-		sidebar_shown = false;
-	} else {
-		$(".sidebar").animate({'left': '0px'}, 500);
-		$(".wrapper").animate({'padding-left':'300px'},500);
-		sidebar_shown = true;
-	}
-});
-
 function find_checked_urls( url_strings ) {
 
 	// Generates each setting tab
@@ -154,7 +154,8 @@ function find_checked_urls( url_strings ) {
 	$( "#sidebar-list" ).html(settings_string);
 
 	// Checks boxes that are configurated by cookies
-	cookies_json = decode_cookie(window.cookie);
+	if (window.cookie) cookies_json = decode_cookie(window.cookie);
+	else cookies_json = "";
 
 	// IN case no search bars shown: WORKS but commented for debug purposes
 	if (jQuery.isEmptyObject(cookies_json)) cookies_json = default_urls;
