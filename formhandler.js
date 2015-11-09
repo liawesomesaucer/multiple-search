@@ -37,7 +37,7 @@ const default_urls = {
 	"Wikipedia": "https://en.wikipedia.org/wiki/Special:Search?search=",	
 	"YouTube":"https://www.youtube.com/results?search_query=",
 }
-const some_random_urls = {
+const some_random_urls = {	// For test purposes
 	"Ted": "http://www.ted.com/search?q=",
 	"LinkedIn": "https://www.linkedin.com/vsearch/f?keywords=",
 	"Quora": "https://www.quora.com/search?q=",
@@ -47,7 +47,6 @@ const some_random_urls = {
 //var cookies_json = decode_cookie( window.cookie );
 if (window.cookie = "") {
 	console.log("No cookies found. Setting default cookies and showing defaults");
-	set_default_cookies();
 	window.cookie = encode_cookie( default_urls )
 }
 
@@ -161,9 +160,9 @@ function find_checked_urls( url_strings ) {
 	// if (jQuery.isEmptyObject(cookies_json)) cookies_json = default_urls;
 	if (jQuery.isEmptyObject(cookies_json)) cookies_json = some_random_urls;
 
+	// Check the urls that are in cookies_json
 	jQuery.each( cookies_json, function(key, val) {
 		if (cookies_json[key] != undefined) {
-			// checked_urls[key] = val;
 			document.getElementById('slideThree-' + key).checked = true;
 		}
 	});
@@ -185,3 +184,6 @@ function rebuild_page(checkbox) {
 	window.cookie = encode_cookie(cookies_json);
 	console.log(encode_cookie(cookies_json));
 }
+
+console.log(window.cookie);
+console.log("wow");
