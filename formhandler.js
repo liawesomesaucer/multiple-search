@@ -7,10 +7,10 @@
 //			name-you-want-displayed: url-of-search-path
 //
 // You can also move them around to change their orders
-var default_urls = ["Bing", "Google", "Google_Images", "Wikipedia", "Youtube"];
-var msg_form_inc = " bar contains no input. Please check again";
 var error = false;
-var url_strings = {
+//const default_urls = ["Bing", "Google", "Google_Images", "Wikipedia", "Youtube"];
+const msg_form_inc = " bar contains no input. Please check again";
+const url_strings = {
 	"Amazon": "http://www.amazon.com/s/field-keywords=",
 	"Bing": "https://bing.com/search?q=",
 	"Dictionary_com": "http://dictionary.reference.com/misspelling?term=",
@@ -30,11 +30,43 @@ var url_strings = {
 	"Yahoo_Answers": "https://answers.yahoo.com/search/search_result?p=",
 	"YouTube":"https://www.youtube.com/results?search_query=",
 }
+const default_urls = {
+	"Bing": "https://bing.com/search?q=",
+	"Google": "https://google.com/#q=",
+	"Google_Images": "https://www.google.com/search?tbm=isch&q=",
+	"Wikipedia": "https://en.wikipedia.org/wiki/Special:Search?search=",	
+	"YouTube":"https://www.youtube.com/results?search_query=",
+}
 
+if (window.cookie = "") {
+	console.log("No cookies found. Setting default cookies and showing defaults");
+	set_default_cookies();
+	window.cookie = encode_cookie( default_urls )
+}
 
-if (!window.cookie) {
-	console.log("No cookies found. Setting default cookies");
-	window.cookie = "url_list=" + JSON.stringify(default_urls);
+function decode_cookie( cookie_string ) {
+	// Converts cookie_string to valid json
+	// Call it on window.cookie
+	cookie_json = {};
+	cookie_list = cookie_string.split(";");
+	for (var j=0;j<cookie_list.length;j++) {
+		if (cookie_list[j] === "") continue;
+		cookie_tuple = cookie_list[j].split("=");
+		cookie_json[cookie_tuple[0]] = cookie_tuple[1];
+	}	
+	return cookie_json;
+}
+
+function encode_cookie( cookie_json ) {
+	// Creates a cookie
+	cookie_string = ""
+	jQuery.each( cookie_json, function(key, val) {	
+		cookie_string = cookie_string + key + "=" + val + ";";
+	});
+}
+
+function validate_search() {
+	// Validates if input search is valid	
 }
 
 function setup_and_listen( url_strings ) {
@@ -43,8 +75,8 @@ function setup_and_listen( url_strings ) {
 	listen( checked_urls );
 }
 
-// Builds the html page based on url_strings
 function setup( url_strings ) {
+	// Builds the html page based on url_strings
 	var setup_string = '';
 	jQuery.each( url_strings, function(key, val) {
 		setup_string = setup_string + 
@@ -58,8 +90,8 @@ function setup( url_strings ) {
 	$( '.inner-ul' ).html( setup_string );
 }
 
-// Listens for a submit event from any of the forms
 function listen( url_strings ) {
+	// Listens for a submit event from any of the forms
 	jQuery.each( url_strings, function(key, val) {
 		$( "#" + key ).submit( function( ev ) {
 			ev.preventDefault();
@@ -70,8 +102,8 @@ function listen( url_strings ) {
 	});
 }
 
-// Displays messages
 function display_banner( key, error, message ) {
+	// Displays messages
 	if ( error ) 
 		$( ".banner" ).css( { "background-color": "#fff"});
 	$( "#banner-msg" ).text( key + message );
@@ -79,7 +111,9 @@ function display_banner( key, error, message ) {
 }
 
 setup_and_listen( url_strings );
-
+// Convert url_list json into string
+// set as cookie
+// figure out how to set and get
 
 // Now dealing with the sidebar
 sidebar_shown = false;
@@ -87,10 +121,10 @@ sidebar_shown = false;
 $('#sidebar-toggle').click( function(){
 	if (sidebar_shown == false) {
 		$(".sidebar").animate({'left': '-300px'}, 500);
-		$(".wrapper").animate({'padding-left':'20px'},500);
+		$(".wrapper").animate({'padding-left':'0px'},500);
 		sidebar_shown = true;
 	} else {
-		$(".sidebar").animate({'left': '0'}, 500);
+		$(".sidebar").animate({'left': '0px'}, 500);
 		$(".wrapper").animate({'padding-left':'300px'},500);
 		sidebar_shown = false;
 	}
@@ -110,22 +144,14 @@ function getCookie(cname) {
 
 function find_checked_urls( url_strings ) {
 
-	var settings_string = '';
-	var cookies ={};
-	var checked_urls = {};
-
+	var settings_string = "";
 	// document.cookie.split(/\s*;\s*/).forEach(function(pair) {
  //  		pair = pair.split(/\s*=\s*/);
  //  		cookies[pair[0]] = pair.splice(1).join('=');
 	// });
 	// document.cookie = url_strings;
-	cookies = getCookie("url_list");
-	console.log(window.cookie)
-	console.log("gettingcookie")
-	console.log(cookies) 
 
-
-	// Generates each cookie
+	// Generates each setting tab
 	jQuery.each( url_strings, function(key, val) {
 		settings_string = settings_string + 
 			'<li id="sidebar-' + key + '" class="sidebar-elem">' +
@@ -139,15 +165,18 @@ function find_checked_urls( url_strings ) {
 	$( "#sidebar-list" ).html(settings_string);
 
 	// Checks boxes that are configurated by cookies
-	jQuery.each( url_strings, function(key, val) {
-		if (cookies[key] != undefined) {
-			checked_urls[key] = val;
+	cookies_json = decode_cookie(window.cookie);
+
+	// IN case no search bars shown
+	// if (jQuery.isEmptyObject(cookies_json)) cookies_json = default_urls;
+
+
+	jQuery.each( cookies_json, function(key, val) {
+		if (cookies_json[key] != undefined) {
+			// checked_urls[key] = val;
 			document.getElementById('slideThree-' + key).checked = true;
 		}
 	});
-	console.log("cookies")
-	console.log(window.cookie)
-	console.log(checked_urls)
-
-	return (Object.keys(checked_urls).length != 0) ? checked_urls : url_strings;
+	return cookies_json;
+	//return (Object.keys(checked_urls).length != 0) ? checked_urls : url_strings;
 }

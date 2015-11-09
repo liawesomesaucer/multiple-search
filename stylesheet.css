@@ -44,8 +44,8 @@ h2 {
 	min-height: 100vh;
 	background-color: #fff;
 
-	padding-left: 20px;
 	/*padding-left: 20px;*/
+	/*padding-left: 20px;	*/
 }
 .banner {
 	width: 100%;
@@ -106,7 +106,7 @@ input[type=checkbox] {
 	margin: 10px;
 }
 .footer {
-	margin-top: 20px;
+	margin: 20px;
 }
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
 	color: inherit;
@@ -146,7 +146,7 @@ input:-webkit-autofill {
 }
 .sidebar-content {
 	background-color: #e6e6e6;
-	border-right: 4px solid;
+	/*border-right: 3px solid;*/
 	padding: 20px 20px 20px 20px;
 	height: 100%;
 	width: 280px;

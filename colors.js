@@ -13,7 +13,7 @@ var colors = {
 	},
 
 	"default_grayscale" : {
-		"main-color" : "#666",
+		"main-color" : "#555",
 		"background-color" : "#fefefe",
 		"input-background-color" : "#e6e6e6",
 		"input-background-hover" : "#8c8c8c",
