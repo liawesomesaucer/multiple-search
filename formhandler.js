@@ -126,14 +126,14 @@ setup_and_listen( url_strings );
 sidebar_shown = false;
 
 $('#sidebar-toggle').click( function(){
-	if (sidebar_shown == false) {
+	if (sidebar_shown == true) {
 		$(".sidebar").animate({'left': '-300px'}, 500);
 		$(".wrapper").animate({'padding-left':'0px'},500);
-		sidebar_shown = true;
+		sidebar_shown = false;
 	} else {
 		$(".sidebar").animate({'left': '0px'}, 500);
 		$(".wrapper").animate({'padding-left':'300px'},500);
-		sidebar_shown = false;
+		sidebar_shown = true;
 	}
 });
 
@@ -157,8 +157,8 @@ function find_checked_urls( url_strings ) {
 	cookies_json = decode_cookie(window.cookie);
 
 	// IN case no search bars shown: WORKS but commented for debug purposes
-	// if (jQuery.isEmptyObject(cookies_json)) cookies_json = default_urls;
-	if (jQuery.isEmptyObject(cookies_json)) cookies_json = some_random_urls;
+	if (jQuery.isEmptyObject(cookies_json)) cookies_json = default_urls;
+	// if (jQuery.isEmptyObject(cookies_json)) cookies_json = some_random_urls;
 
 	// Check the urls that are in cookies_json
 	jQuery.each( cookies_json, function(key, val) {
