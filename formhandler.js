@@ -185,6 +185,8 @@ function rebuild_page(checkbox) {
 	window.cookie = encode_cookie(cookies_json);
 	console.log(encode_cookie(cookies_json));
 	console.log(window.cookie);
+	test_cookie = decode_cookie(window.cookie);
+	console.log(test_cookie);
 }
 
 console.log(window.cookie);
