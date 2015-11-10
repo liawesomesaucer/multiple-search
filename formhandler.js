@@ -70,7 +70,7 @@ function decode_cookie( cookie_string ) {
 	// Converts cookie_string to valid json
 	// Call it on document.cookie
 	var cookie_json = {};
-	var cookie_list = cookie_string.split(";");
+	var cookie_list = cookie_string.split("; ");
 	for (var j=0;j<cookie_list.length;j++) {
 		if (cookie_list[j].length == 0) continue;
 		cookie_tuple = cookie_list[j].split("=");
@@ -83,7 +83,7 @@ function encode_cookie( cookie_json ) {
 	// Creates a cookie
 	var cookie_string = "";
 	jQuery.each( cookie_json, function(key, val) {	
-		cookie_string = cookie_string + key + "=" + val + ";";
+		cookie_string = cookie_string + key + "=" + val + "; ";
 	});
 	return cookie_string;
 }
