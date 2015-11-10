@@ -44,10 +44,10 @@ const some_random_urls = {	// For test purposes
 	"Reddit": "https://www.reddit.com/r/all/search?q=",
 	"Twitter": "https://twitter.com/search?q=",
 }
-//var cookies_json = decode_cookie( window.cookie );
-// if (window.cookie.length == 0) {
+//var cookies_json = decode_cookie( document.cookie );
+// if (document.cookie.length == 0) {
 // 	console.log("No cookies found. Setting default cookies and showing defaults");
-// 	window.cookie = encode_cookie( default_urls )
+// 	document.cookie = encode_cookie( default_urls )
 // }
 
 // Now dealing with the sidebar
@@ -68,7 +68,7 @@ $('#sidebar-toggle').click( function(){
 
 function decode_cookie( cookie_string ) {
 	// Converts cookie_string to valid json
-	// Call it on window.cookie
+	// Call it on document.cookie
 	var cookie_json = {};
 	var cookie_list = cookie_string.split(";");
 	for (var j=0;j<cookie_list.length;j++) {
@@ -119,14 +119,14 @@ function listen( url_strings ) {
 		$( "#" + key ).submit( function( ev ) {
 			ev.preventDefault();
 		    if ( $( "#" + key + "-input" ).val() )
-		    	window.location=val + $( "#" + key + "-input" ).val();
+		    	document.location=val + $( "#" + key + "-input" ).val();
 		    else display_banner( key, error=true, msg_form_inc );
 		});
 	});
 }
 
 function display_banner( key, error, message ) {
-	// Displays messages
+	// Displays banner messages
 	if ( error ) 
 		$( ".banner" ).css( { "background-color": "#fff"});
 	$( "#banner-msg" ).text( key + message );
@@ -138,7 +138,6 @@ setup_and_listen( url_strings );
 // set as cookie
 // figure out how to set and get
 function find_checked_urls( url_strings ) {
-
 	// Generates each setting tab
 	var settings_string = "";
 	jQuery.each( url_strings, function(key, val) {
@@ -154,7 +153,7 @@ function find_checked_urls( url_strings ) {
 	$( "#sidebar-list" ).html(settings_string);
 
 	// Checks boxes that are configurated by cookies
-	if (window.cookie) cookies_json = decode_cookie(window.cookie);
+	if (document.cookie) cookies_json = decode_cookie(document.cookie);
 	else cookies_json = "";
 
 	// IN case no search bars shown: WORKS but commented for debug purposes
@@ -171,6 +170,7 @@ function find_checked_urls( url_strings ) {
 }
 
 function rebuild_page(checkbox) {
+	// Reconfigures search bars; called each time setting is changed
 	var checkbox_name = checkbox.id.split("slideThree-")[1];
 	if (checkbox.checked == true) {
 		console.log(checkbox_name + " has been added to preferences");
@@ -182,12 +182,12 @@ function rebuild_page(checkbox) {
 	}
 	setup(cookies_json);
 	console.log(cookies_json);
-	window.cookie = encode_cookie(cookies_json);
+	document.cookie = encode_cookie(cookies_json);
 	console.log(encode_cookie(cookies_json));
-	console.log(window.cookie);
-	test_cookie = decode_cookie(window.cookie);
+	console.log(document.cookie);
+	test_cookie = decode_cookie(document.cookie);
 	console.log(test_cookie);
 }
 
-console.log(window.cookie);
+console.log(document.cookie);
 console.log("wow");
