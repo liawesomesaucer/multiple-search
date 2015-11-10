@@ -196,9 +196,11 @@ console.log(document.cookie);
 console.log("wow");
 
 function add_cookie( key, url ) {
+	console.log(key);
+	console.log(url);
 	document.cookie = key + "=" + url + "; ";
 }
 
 function delete_cookie( key ) {
-	document.cookie = key + "=;";
+	document.cookie = key + "=; expires=Fri, 27 Jul 2001 02:47:11 UTC";
 }
