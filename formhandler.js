@@ -196,9 +196,9 @@ console.log(document.cookie);
 console.log("wow");
 
 function add_cookie( key, url ) {
-	window.cookie = key + "=" + url + "; ";
+	document.cookie = key + "=" + url + "; ";
 }
 
 function delete_cookie( key ) {
-	window.cookie = key + "=;";
+	document.cookie = key + "=;";
 }
