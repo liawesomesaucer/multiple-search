@@ -111,6 +111,7 @@ function setup( url_strings ) {		// I should use react for this
 		'</li>';
 	});
 	$( '.inner-ul' ).html( setup_string );
+	change_colors( color_scheme );
 }
 
 function listen( url_strings ) {

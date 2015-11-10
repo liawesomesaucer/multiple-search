@@ -23,14 +23,14 @@ var colors = {
 	"default_blue_accent" : {
 		"main-color" : "#006666",
 		"background-color" : "#fff",
-		"input-background-color" : "#ddd",
+		"input-background-color" : "#e6e6e6",
 		"input-background-hover" : "#8c8c8c",
 		"banner-background-color": "#e6e6e6"
 	},
 
 	"default_dark" : {
 		"main-color" : "#222",
-		"background-color" : "#555",
+		"background-color" : "#777",
 		"input-background-color" : "#bbbbbb",
 		"input-background-hover" : "#666",
 		"banner-background-color": "#bbbbbb"
@@ -54,5 +54,8 @@ function change_colors( color_scheme ) {
 	$( ".wrapper" ).css({ "background-color":color_settings["background-color"] });
 	$( "input" ).css({ "background-color": color_settings["input-background-color"]});
 	$( ".banner" ).css({ "background-color": color_settings["banner-background-color"]});
+	$( ".slideThree label").css({"background-color": color_settings["background-color"]});
+
+	$( ".sidebar-content" ).css({ "background-color": color_settings["input-background-color"]});
+
 }
-change_colors( color_scheme );

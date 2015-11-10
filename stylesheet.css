@@ -48,7 +48,7 @@ h2 {
 .wrapper {
 	min-width: 700px;
 	min-width: 100%;
-	min-height: 90vh;
+	min-height: 100vh;
 	background-color: #fff;
 
 	/*padding-left: 20px;*/
@@ -84,7 +84,7 @@ input {
 	margin: 0;
 	font-size: 28px;
 	margin: auto;
-	background-color: #eee;
+	background-color: #e6e6e6;
 	/*color: #006666;*/
 	line-height: 52px;
 	padding: 2px 10px 2px 10px;
@@ -113,7 +113,7 @@ input[type=checkbox] {
 	margin: 10px;
 }
 .footer {
-	margin: 20px;
+	padding: 20px;
 }
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
 	color: inherit;
@@ -153,7 +153,7 @@ input:-webkit-autofill {
 }
 .sidebar-content {
 	background-color: #e6e6e6;
-	/*border-right: 3px solid;*/
+	border-right: 3px solid;
 	padding: 20px 20px 20px 20px;
 	height: 100%;
 	width: 280px;
