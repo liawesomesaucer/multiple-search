@@ -154,10 +154,18 @@ function find_checked_urls( url_strings ) {
 
 	// Checks boxes that are configurated by cookies
 	if (document.cookie) cookies_json = decode_cookie(document.cookie);
-	else cookies_json = "";
+	else {
+		cookies_json = "";
+	}
 
 	// IN case no search bars shown: WORKS but commented for debug purposes
-	if (jQuery.isEmptyObject(cookies_json)) cookies_json = default_urls;
+	if (jQuery.isEmptyObject(cookies_json)) {
+		// Use defaults and add them as cookies
+		cookies_json = default_urls;
+		jQuery.each(default_urls, function(key, val) {
+			add_cookie(key, val);
+		})
+	}
 	// if (jQuery.isEmptyObject(cookies_json)) cookies_json = some_random_urls;
 
 	// Check the urls that are in cookies_json
@@ -196,8 +204,6 @@ console.log(document.cookie);
 console.log("wow");
 
 function add_cookie( key, url ) {
-	console.log(key);
-	console.log(url);
 	document.cookie = key + "=" + url + "; ";
 }
 
