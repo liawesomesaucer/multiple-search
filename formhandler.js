@@ -171,18 +171,21 @@ function find_checked_urls( url_strings ) {
 
 function rebuild_page(checkbox) {
 	// Reconfigures search bars; called each time setting is changed
+	// Also adds/removes cookies based on preferences
 	var checkbox_name = checkbox.id.split("slideThree-")[1];
 	if (checkbox.checked == true) {
 		console.log(checkbox_name + " has been added to preferences");
 		cookies_json[checkbox_name] = url_strings[checkbox_name];
+		add_cookie(cookies_json[checkbox_name], url_strings[checkbox_name]);
 	}
 	else {
 		console.log(checkbox_name + " has been removed from preferences");
 		delete cookies_json[checkbox_name];
+		delete_cookie(checkbox_name);
 	}
 	setup(cookies_json);
 	console.log(cookies_json);
-	document.cookie = encode_cookie(cookies_json);
+	// document.cookie = encode_cookie(cookies_json);
 	console.log(encode_cookie(cookies_json));
 	console.log(document.cookie);
 	test_cookie = decode_cookie(document.cookie);
@@ -191,3 +194,11 @@ function rebuild_page(checkbox) {
 
 console.log(document.cookie);
 console.log("wow");
+
+function add_cookie( key, url ) {
+	window.cookie = key + "=" + url + "; ";
+}
+
+function delete_cookie( key ) {
+	window.cookie = key + "=;";
+}
