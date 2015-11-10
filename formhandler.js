@@ -176,7 +176,7 @@ function rebuild_page(checkbox) {
 	if (checkbox.checked == true) {
 		console.log(checkbox_name + " has been added to preferences");
 		cookies_json[checkbox_name] = url_strings[checkbox_name];
-		add_cookie(cookies_json[checkbox_name], url_strings[checkbox_name]);
+		add_cookie(checkbox_name, url_strings[checkbox_name]);
 	}
 	else {
 		console.log(checkbox_name + " has been removed from preferences");
