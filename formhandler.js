@@ -157,6 +157,7 @@ function find_checked_urls( url_strings ) {
 			'</li>';
 	});
 	$( "#sidebar-list" ).html(settings_string);
+	console.log(settings_string)
 
 	// Checks boxes that are configurated by cookies
 	if (document.cookie) cookies_json = decode_cookie(document.cookie);
@@ -177,7 +178,7 @@ function find_checked_urls( url_strings ) {
 	// Check the urls that are in cookies_json
 	jQuery.each( cookies_json, function(key, val) {
 		if (cookies_json[key] != undefined) {
-			if (document.getElementById('slideThree' + key))
+			if (document.getElementById('slideThree-' + key))
 				document.getElementById('slideThree-' + key).checked = true;
 		}
 	});

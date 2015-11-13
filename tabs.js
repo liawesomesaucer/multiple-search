@@ -78,7 +78,6 @@ function dehighlight_tab(elem_id) {
 function setup_color_schemes( key, val ) {
 	$("#color_background_" + key ).css({"background-color": val["background-color"]});
 	$("#color_input_" + key ).css({"background-color": val["input-background-color"]});
-	console.log(val["main-color"])
 	$("#color_text_" + key ).css({"color": val["main-color"] });
 	$("#color_background_" + key ).css({"border": "1px solid " + val["main-color"] });
 }
@@ -95,6 +94,5 @@ function color_scheme_listen() {
 		tab_colors();
 		$( ".color_change_title" ).css({ "color": color_settings["main-color"]});
 		add_cookie("color_cookie", color_scheme );
-		// console.log(window.cookie);
 	});
 }
