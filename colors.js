@@ -1,8 +1,8 @@
 // Color schemes.
 // Pick one of the dank implemented color schemes
-color_scheme = "default_blue_accent";
+var color_scheme = "default_blue_accent";
 
-var colors = {
+const colors = {
 
 	"dank_blue" : {
 		"main-color" : "#006666",
@@ -23,9 +23,9 @@ var colors = {
 	"default_blue_accent" : {
 		"main-color" : "#006666",
 		"background-color" : "#fff",
-		"input-background-color" : "#e6e6e6",
+		"input-background-color" : "#eeeeee",
 		"input-background-hover" : "#8c8c8c",
-		"banner-background-color": "#e6e6e6"
+		"banner-background-color": "#eeeeee"
 	},
 
 	"default_dark" : {
@@ -59,3 +59,6 @@ function change_colors( color_scheme ) {
 	$( ".sidebar-content" ).css({ "background-color": color_settings["input-background-color"]});
 
 }
+
+
+// Dealing with tabs

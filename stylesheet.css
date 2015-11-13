@@ -45,14 +45,19 @@ h2 {
 	font-size: 28px;
 	line-height: 36px;
 }
+h3 {
+	font-size: 22px;
+	line-height:30px;
+}
 .wrapper {
 	min-width: 700px;
 	min-width: 100%;
 	min-height: 100vh;
 	background-color: #fff;
-
 	/*padding-left: 20px;*/
 	/*padding-left: 20px;	*/
+	/*display: table;*/
+
 }
 .banner {
 	width: 100%;
@@ -72,9 +77,13 @@ h2 {
 	max-width: 900px;
 	min-height: 400px;
 	padding-top: 5%;
+
+
 }
 li {
 	list-style-type:none;
+	padding: 0;
+	margin: 0;
 }
 form {
 	min-width: 520px;
@@ -132,6 +141,9 @@ input[type=checkbox] {
 input:-webkit-autofill {
     color: inherit !important;
 }
+.underline {
+	text-decoration: underline;
+}
 .sidebar {
 	/*float: right;*/
 	text-align: left;
@@ -153,17 +165,17 @@ input:-webkit-autofill {
 }
 .sidebar-content {
 	background-color: #e6e6e6;
-	border-right: 3px solid;
-	padding: 20px 20px 20px 20px;
+	border-right: 2px solid;
+	padding: 18px 20px 20px 20px;
 	height: 100%;
-	width: 280px;
+	width: 279px;
 	/*background-color: white;*/
 }
 .sidebar-title {
 	text-align: center;
 	border-bottom: 1px solid;
 	margin-bottom: 14px;
-	padding-bottom: 5px;
+	/*padding-bottom: 5px;*/
 }
 .sidebar-elem {
 	width: 100%;
@@ -178,6 +190,18 @@ input:-webkit-autofill {
 }
 .sidebar-content, .sidebar-icon {
 	display: inline-block;
+}
+.sidebar-title li {
+	display: inline-block;
+	width: 88px;
+	/*border-right: 1px solid;*/
+	/*margin-right: 1px;*/
+	padding-top: 2px;
+	padding-bottom:2px;
+	margin: 1px 1px 0 1px;
+}
+.sidebar-title a{
+	/* ADd hover effect or something */
 }
 
 .slideThree {
@@ -252,4 +276,18 @@ input:-webkit-autofill {
 
 .slideThree input[type=checkbox]:checked + label {
 	left: 43px;
+}
+.about_paragraph {
+	margin-top: 10px;
+}
+.color_box {
+	width: 100%;
+	margin-top: 10px;
+	padding-top: 30px;
+	/*height: 1000px;*/
+	/*height: 100px;*/
+}
+.color_background {
+	height: 200px;
+	padding-top: 25px;
 }

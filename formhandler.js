@@ -172,7 +172,8 @@ function find_checked_urls( url_strings ) {
 	// Check the urls that are in cookies_json
 	jQuery.each( cookies_json, function(key, val) {
 		if (cookies_json[key] != undefined) {
-			document.getElementById('slideThree-' + key).checked = true;
+			if (document.getElementById('slideThree' + key))
+				document.getElementById('slideThree-' + key).checked = true;
 		}
 	});
 	return cookies_json;
@@ -193,16 +194,10 @@ function rebuild_page(checkbox) {
 		delete_cookie(checkbox_name);
 	}
 	setup(cookies_json);
-	console.log(cookies_json);
-	// document.cookie = encode_cookie(cookies_json);
-	console.log(encode_cookie(cookies_json));
-	console.log(document.cookie);
-	test_cookie = decode_cookie(document.cookie);
-	console.log(test_cookie);
 }
 
+console.log("document.cookie:");
 console.log(document.cookie);
-console.log("wow");
 
 function add_cookie( key, url ) {
 	document.cookie = key + "=" + url + "; ";
