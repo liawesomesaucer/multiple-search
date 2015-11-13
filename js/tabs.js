@@ -82,7 +82,7 @@ function setup_color_schemes( key, val ) {
 	$("#color_background_" + key ).css({"background-color": val["background-color"]});
 	$("#color_input_" + key ).css({"background-color": val["input-background-color"]});
 	$("#color_text_" + key ).css({"color": val["main-color"] });
-	$("#color_background_" + key ).css({"border": "1px solid " + val["main-color"] });
+	$("#color_background_" + key ).css({"border": "2px solid " + val["main-color"] });
 }
 // By default, highlight the urls tab
 highlight_tab("#url_settings");

@@ -81,7 +81,7 @@ function decode_cookie( cookie_string ) {
 			continue;
 		}
 		cookie_tuple = cookie_list[j].split("=");
-		cookie_json[cookie_tuple[0]] = cookie_tuple[1];
+		cookie_json[cookie_tuple[0]] = cookie_tuple[1] + "=";
 	}	
 	return cookie_json;
 }
@@ -159,7 +159,7 @@ function find_checked_urls( url_strings ) {
 			'</li>';
 	});
 	$( "#sidebar-list" ).html(settings_string);
-	console.log(settings_string)
+	// console.log(settings_string)
 
 	// Checks boxes that are configurated by cookies
 	if (document.cookie) cookies_json = decode_cookie(document.cookie);
