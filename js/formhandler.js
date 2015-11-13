@@ -135,8 +135,8 @@ function listen( url_strings ) {
 
 function display_banner( key, error, message ) {
 	// Displays banner messages
-	if ( error ) 
-		$( ".banner" ).css( { "background-color": "#fff"});
+	// if ( error ) 
+	// 	$( ".banner" ).css( { "background-color": "#fff"});
 	$( "#banner-msg" ).text( key + message );
 	error = false;
 }

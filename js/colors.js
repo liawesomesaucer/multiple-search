@@ -63,7 +63,7 @@ function change_colors( color_scheme ) {
 	$( "*" ).css({ "color": color_settings["main-color"]});
 	$( ".wrapper" ).css({ "background-color":color_settings["background-color"] });
 	$( "input" ).css({ "background-color": color_settings["input-background-color"]});
-	$( ".banner" ).css({ "background-color": color_settings["banner-background-color"]});
+	//$( ".banner" ).css({ "background-color": color_settings["banner-background-color"]});
 	$( ".slideThree label").css({"background-color": color_settings["background-color"]});
 
 	$( ".sidebar-content" ).css({ "background-color": color_settings["input-background-color"]});
