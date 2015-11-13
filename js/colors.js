@@ -1,26 +1,10 @@
 // Color schemes.
 // Pick one of the dank implemented color schemes
-var color_scheme = "default_blue_accent";
+var color_scheme = "Default_Blue_Accent";
 
 const colors = {
 
-	"dank_blue" : {
-		"main-color" : "#006666",
-		"background-color" : "#33ffff",
-		"input-background-color" : "#00cccc",
-		"input-background-hover" : "#00b2b2",
-		"banner-color": "#fff"
-	},
-
-	"default_grayscale" : {
-		"main-color" : "#555",
-		"background-color" : "#fefefe",
-		"input-background-color" : "#e6e6e6",
-		"input-background-hover" : "#8c8c8c",
-		"banner-background-color": "#e6e6e6"
-	},
-
-	"default_blue_accent" : {
+	"Default_Blue_Accent" : {
 		"main-color" : "#006666",
 		"background-color" : "#fff",
 		"input-background-color" : "#eeeeee",
@@ -28,17 +12,43 @@ const colors = {
 		"banner-background-color": "#eeeeee"
 	},
 
-	"default_dark" : {
-		"main-color" : "#222",
-		"background-color" : "#777",
-		"input-background-color" : "#bbbbbb",
-		"input-background-hover" : "#666",
-		"banner-background-color": "#bbbbbb"
+	"Grayscale" : {
+		"main-color" : "#555",
+		"background-color" : "#ddd",
+		"input-background-color" : "#c2c2c2",
+		"input-background-hover" : "#8c8c8c",
+		"banner-background-color": "#ddd"
 	},
 
-	"calm_green" : {
+
+	"Darkened" : {
+		"main-color" : "#6f0005",
+		"background-color" : "#555",
+		"input-background-color" : "#666",
+		"input-background-hover" : "#666",
+		"banner-background-color": "#555"
+	},
+
+	"Blaring_Blue" : {
+		"main-color" : "rgba(0, 0, 0, 0.5)",
+		"background-color" : "#4ddbff",
+		"input-background-color" : "rgba(0, 0, 0, 0.25)",
+		"input-background-hover" : "rgba(0, 0, 0, 0.8)",
+		"banner-color": "#rgba( 255, 255, 255, 0.8)"
+	},
+
+
+	"Calm_Green" : {
 		"main-color" : "rgba(0, 0, 0, 0.5)",
 		"background-color" : "#2dcb89",
+		"input-background-color" : "rgba( 0, 0, 0, 0.25 )",
+		"input-background-hover" : "rgba( 0, 0, 0, 0.8 )",
+		"banner-background-color": "rgba( 255, 255, 255, 0.8 )"
+	},
+
+	"Cool_Purple" : {
+		"main-color" : "rgba(0, 0, 0, 0.5)",
+		"background-color" : "#a679d2",
 		"input-background-color" : "rgba( 0, 0, 0, 0.25 )",
 		"input-background-hover" : "rgba( 0, 0, 0, 0.8 )",
 		"banner-background-color": "rgba( 255, 255, 255, 0.8 )"

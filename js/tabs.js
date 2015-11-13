@@ -2,6 +2,7 @@
 // Depends on both other files
 
 const about_string = '<h3>Multiple Search, v1.1</h3>' + 
+	'<div class="about_paragraph"><p><strong>Check out the neighboring tabs for customization options!</strong></p></div>' + 
 	'<div class="about_paragraph"><p>Multiple Search allows you to have all your' +
 	' search bars on one page.  You can clone the repo' + 
 	' <a class="underline" href="http://github.com/liawesomesaucer/multiple-search">here</a>.' +
@@ -10,7 +11,8 @@ const about_string = '<h3>Multiple Search, v1.1</h3>' +
 	'<p>- Cookies are required to remember preferences</p></div>' +
 	'<div class="about_paragraph"><h4>Latest additions:</h4></div>' +
 	'<div class="about_paragraph"><p>- Colors can now be changed from the client and are stored in your cookies</p>' +
-	'<p>- Now uses cookies to store your selected search bars</p></div>';
+	'<p>- Now uses cookies to store your selected search bars</p></div>' +
+	'<div class="about_paragraph"><p>If I had to pick a license, MIT. Basically means you can do whatever you want with it.</p></div>';
 
 // Handling event clicks
 $("#url_settings").click( function() {
@@ -71,7 +73,7 @@ function highlight_tab(elem_id) {
 }
 
 function dehighlight_tab(elem_id) {
-	$(elem_id + " li").css({"background-color": color_settings["input-background-color"],
+	$(elem_id + " li").css({"background-color": "inherit",
 							"border": "none",
 							"margin": "1px 1px 0 1px"});
 }
@@ -97,3 +99,12 @@ function color_scheme_listen() {
 		add_cookie("color_cookie", color_scheme );
 	});
 }
+
+$( "#about").click( function() {
+	tab_about();
+	if (!sidebar_shown) toggle_sidebar();
+});
+$( "#customize").click(function() {
+	tab_urls();
+	if (!sidebar_shown) toggle_sidebar();
+});

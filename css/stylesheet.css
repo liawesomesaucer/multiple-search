@@ -46,6 +46,10 @@ h3 {
 	font-size: 22px;
 	line-height:30px;
 }
+h4  {
+	font-size: 20px;
+	line-height:20px;
+}
 .wrapper {
 	min-width: 700px;
 	min-width: 100%;
@@ -303,4 +307,7 @@ input:-webkit-autofill {
 }
 a.change_color:hover {
 	cursor: pointer;
+}
+.hover_underline:hover {
+	text-decoration: underline;
 }

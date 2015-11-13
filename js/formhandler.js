@@ -54,6 +54,10 @@ const some_random_urls = {	// For test purposes
 sidebar_shown = false;
 
 $('#sidebar-toggle').click( function(){
+	toggle_sidebar();
+});
+
+function toggle_sidebar() {
 	if (sidebar_shown == true) {
 		$(".sidebar").animate({'left': '-300px'}, 500);
 		$(".wrapper").animate({'padding-left':'0px'},500);
@@ -63,9 +67,7 @@ $('#sidebar-toggle').click( function(){
 		$(".wrapper").animate({'padding-left':'300px'},500);
 		sidebar_shown = true;
 	}
-});
-
-
+}
 function decode_cookie( cookie_string ) {
 	// Converts cookie_string to valid json
 	// Call it on document.cookie
