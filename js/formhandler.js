@@ -80,9 +80,16 @@ function decode_cookie( cookie_string ) {
 			color_scheme = cookie_list[j].split("=")[1];
 			continue;
 		}
+		// else if (cookie_list[j].split("=")[0] === "Google_Images") {	// Yeah terrible practice
+		// 	cookie_json[cookie_list[0]] = cookie_list[j].split("=");
+		// 	continue;
+		// }
 		cookie_tuple = cookie_list[j].split("=");
-		cookie_json[cookie_tuple[0]] = cookie_tuple[1] + "=";
-	}	
+		cookie_tuple = [cookie_tuple[0], cookie_tuple.slice(1).join("=")];
+		cookie_json[cookie_tuple[0]] = cookie_tuple[1];
+
+	}
+	console.log(cookie_json);	
 	return cookie_json;
 }
 
@@ -201,7 +208,9 @@ function rebuild_page(checkbox) {
 		delete cookies_json[checkbox_name];
 		delete_cookie(checkbox_name);
 	}
+	console.log(cookies_json);
 	setup(cookies_json);
+	listen(cookies_json);
 }
 
 console.log("document.cookie:");
