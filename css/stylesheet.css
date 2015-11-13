@@ -1,10 +1,6 @@
 @font-face {
-	font-family: "OpenSans-Light";
-	src: url('OpenSans/OpenSans-Light.ttf');
-}
-@font-face {
 	font-family: "OpenSans-Regular";
-	src: url('OpenSans/OpenSans-Regular.ttf');
+	src: url('../font/OpenSans-Regular.ttf');
 }
 ::-moz-selection {
    background-color: #e6e6e6;

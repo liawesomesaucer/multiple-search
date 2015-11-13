@@ -12,21 +12,21 @@ A working link is available [here](http://liawesomesaucer.github.io/multiple-sea
 - Just redirect to/bookmark that page.
 
 *OR* you can fork the repo and configure it locally
-Two important configuration files
+Three important configuration files
 - colors.js - handles colors; you can select color schemes, and create your own if you'd like.
 - formhandler.js - handles forms, cookies, etc
+- tabs.js - deals with each of the settings tabs (colors, about, etc)
 
 #### Upcoming features
-- *Color Schemes* - change colors from the webpage
 - *Custom URLs* - add your own search URLs
 
 Copyright under MIT - enjoy!!
 
 ### v1.1
+- *Color Schemes* now available change colors from the webpage and have them stay!  Yay!!
 - Sidebar configurations are now available
 - Added default search bars (for absence of cookies)
 - Added cookie functionality; now remembers chosen search bars
-- Colors are functional but only editable by changing source code
 
 ### v1.0
 - Multiple search bars available with working links

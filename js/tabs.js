@@ -9,7 +9,7 @@ const about_string = '<h3>Multiple Search, v1.1</h3>' +
 	'<div class="about_paragraph"><p>- Javascript is required for this to work.</p>' +
 	'<p>- Cookies are required to remember preferences</p></div>' +
 	'<div class="about_paragraph"><h4>Latest additions:</h4></div>' +
-	'<div class="about_paragraph"><p>- Colors can now be changed from the client but not yet stored</p>' +
+	'<div class="about_paragraph"><p>- Colors can now be changed from the client and are stored in your cookies</p>' +
 	'<p>- Now uses cookies to store your selected search bars</p></div>';
 
 // Handling event clicks
@@ -32,7 +32,7 @@ function tab_urls() {
 	highlight_tab("#url_settings");
 }
 function tab_colors() {
-	color_settings_string = '<h2 class="color_change_title">Color Schemes</h2>' +
+	color_settings_string = '<h3 class="color_change_title">Color Schemes</h3>' +
 	'<p class="color_change_title">Pick a color scheme:</p><ul>'
 	jQuery.each( colors, function(key, val) {
 		color_settings_string = color_settings_string + 
@@ -46,6 +46,7 @@ function tab_colors() {
 	});
 	color_settings_string = color_settings_string + "</ul>"
 	$("#sidebar-list").html(color_settings_string);
+	change_colors( color_scheme );
 	jQuery.each( colors, function(key, val) {
 		setup_color_schemes(key, val);
 	});
