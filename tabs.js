@@ -32,7 +32,8 @@ function tab_urls() {
 	highlight_tab("#url_settings");
 }
 function tab_colors() {
-	color_settings_string = "<h2>Color Schemes</h2><ul>";
+	color_settings_string = '<h2 class="color_change_title">Color Schemes</h2>' +
+	'<p class="color_change_title">Pick a color scheme:</p><ul>'
 	jQuery.each( colors, function(key, val) {
 		color_settings_string = color_settings_string + 
 		'<a class="change_color" id="change_color_to_'+ key + '"><li class="color_box">' +
@@ -77,18 +78,23 @@ function dehighlight_tab(elem_id) {
 function setup_color_schemes( key, val ) {
 	$("#color_background_" + key ).css({"background-color": val["background-color"]});
 	$("#color_input_" + key ).css({"background-color": val["input-background-color"]});
-	$("#color_text_" + key ).css({"color": val["main-color"] + " !important" });
+	console.log(val["main-color"])
+	$("#color_text_" + key ).css({"color": val["main-color"] });
 	$("#color_background_" + key ).css({"border": "1px solid " + val["main-color"] });
 }
 // By default, highlight the urls tab
 highlight_tab("#url_settings");
 function color_scheme_listen() {
 	$( ".change_color").click( function() {
+		// decode_cookie(window.cookie);
 		color_scheme = this.id.split("change_color_to_")[1];
 		change_colors( color_scheme );
 		dehighlight_tab("#about_settings");	// Deals with tab colors
 		dehighlight_tab("#url_settings");
 		highlight_tab("#color_settings");
-		// tab_colors();
+		tab_colors();
+		$( ".color_change_title" ).css({ "color": color_settings["main-color"]});
+		add_cookie("color_cookie", color_scheme );
+		// console.log(window.cookie);
 	});
 }

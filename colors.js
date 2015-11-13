@@ -59,6 +59,3 @@ function change_colors( color_scheme ) {
 	$( ".sidebar-content" ).css({ "background-color": color_settings["input-background-color"]});
 
 }
-
-
-// Dealing with tabs

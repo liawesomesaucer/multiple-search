@@ -69,10 +69,15 @@ $('#sidebar-toggle').click( function(){
 function decode_cookie( cookie_string ) {
 	// Converts cookie_string to valid json
 	// Call it on document.cookie
+	// Also sets the color scheme
 	var cookie_json = {};
 	var cookie_list = cookie_string.split("; ");
 	for (var j=0;j<cookie_list.length;j++) {
 		if (cookie_list[j].length == 0) continue;
+		if (cookie_list[j].split("=")[0] === "color_cookie") {
+			color_scheme = cookie_list[j].split("=")[1];
+			continue;
+		}
 		cookie_tuple = cookie_list[j].split("=");
 		cookie_json[cookie_tuple[0]] = cookie_tuple[1];
 	}	
