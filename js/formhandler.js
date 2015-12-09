@@ -15,7 +15,7 @@ const url_strings = {
 	"Bing": "https://bing.com/search?q=",
 	"Dictionary_com": "http://dictionary.reference.com/misspelling?term=",
 	// "Flickr": "https://www.flickr.com/search/?text=",
-	"Google": "https://google.com/#q=",
+	"Google": "https://google.com/search?q=",
 	"Google_Images": "https://www.google.com/search?tbm=isch&q=",
 	"KhanAcademy": "https://www.khanacademy.org/search?page_search_query=",
 	"LinkedIn": "https://www.linkedin.com/vsearch/f?keywords=",
@@ -32,7 +32,7 @@ const url_strings = {
 }
 const default_urls = {
 	"Bing": "https://bing.com/search?q=",
-	"Google": "https://google.com/#q=",
+	"Google": "https://google.com/search?q=",
 	"Google_Images": "https://www.google.com/search?tbm=isch&q=",
 	"Wikipedia": "https://en.wikipedia.org/wiki/Special:Search?search=",	
 	"YouTube":"https://www.youtube.com/results?search_query=",
